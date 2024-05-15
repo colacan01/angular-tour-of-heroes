@@ -9,7 +9,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 
-import { HeroService} from '../hero.service';
+import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -21,7 +22,7 @@ import { HeroService} from '../hero.service';
     NgIf,
     MatTableModule,
     MatSortModule,
-    HeroDetailComponent,
+    HeroDetailComponent,    
   ],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.css'
@@ -38,6 +39,7 @@ export class HeroesComponent implements AfterViewInit {
   
   selectedHero?:Hero;
   onSelect(hero:Hero): void {
+    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
     this.selectedHero = hero;
   }
 
@@ -47,7 +49,8 @@ export class HeroesComponent implements AfterViewInit {
 
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
-    private heroService: HeroService
+    private heroService: HeroService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
