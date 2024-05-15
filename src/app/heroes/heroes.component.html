@@ -46,14 +46,4 @@
         <tr mat-row *matRowDef="let row; columns: displayCols;"></tr>
     </table>
 </section>
-
-<section id="selectedHero" class="mt-3">
-    <div *ngIf="selectedHero">
-        <h2>{{selectedHero.name | uppercase}}</h2>
-        <div>id: {{selectedHero.id}}</div>
-        <div>
-            <label for="hero-name">Hero name: </label>
-            <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name" >
-        </div>
-    </div>
-</section>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
